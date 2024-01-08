@@ -1,0 +1,17 @@
+server:
+  port: 8555
+  
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Developer
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
+jwt:
+  auth:
+    converter:
+      resource-id: dev-demo-app
+      role-prefix: ROLE_
+      principal-attribute: email
